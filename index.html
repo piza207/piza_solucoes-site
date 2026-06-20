@@ -233,6 +233,8 @@ body {
       <button class="nav-link" data-page="eletrica">⚡ Elétrica</button>
       <button class="nav-link" data-page="hidraulica">💧 Hidráulica</button>
       <button class="nav-link" data-page="automacao">🏠 Automação</button>
+      <button class="nav-link" data-page="arcondicionado">❄️ Ar Condicionado</button>
+      <button class="nav-link" data-page="outros">🔧 Outros Serviços</button>
       <button class="nav-link" data-page="galeria">📸 Galeria</button>
       <button class="nav-link" data-page="contato">📞 Contato</button>
     </div>
@@ -256,6 +258,8 @@ body {
         <div class="preview-card" onclick="showPage('eletrica')"><div class="preview-icon">⚡</div><h3>Elétrica</h3><p>Instalações, reparos, iluminação LED e projetos elétricos</p></div>
         <div class="preview-card" onclick="showPage('hidraulica')"><div class="preview-icon">💧</div><h3>Hidráulica</h3><p>Reparos, instalações e manutenção em geral</p></div>
         <div class="preview-card" onclick="showPage('automacao')"><div class="preview-icon">🏠</div><h3>Automação</h3><p>Casa inteligente, interruptores WiFi, sensores e mais</p></div>
+        <div class="preview-card" onclick="showPage('arcondicionado')"><div class="preview-icon">❄️</div><h3>Ar Condicionado</h3><p>Instalação, manutenção e limpeza de ar condicionado</p></div>
+        <div class="preview-card" onclick="showPage('outros')"><div class="preview-icon">🔧</div><h3>Outros Serviços</h3><p>Não achou o que precisa? Descreva aqui sua necessidade</p></div>
       </div>
     </div>
     <div class="section" style="background: rgba(255,255,255,0.02); border-radius: 48px; margin: 20px auto;">
@@ -442,6 +446,68 @@ body {
     </div>
   </div>
 
+  <div id="page-arcondicionado" class="page">
+    <div class="hero">
+      <div class="local-badge"><span>📍</span> <span>Atendimento exclusivo · <strong>Campinas/SP</strong></span></div>
+      <h1>❄️ Ar Condicionado</h1>
+      <div class="tagline">Instalação, manutenção e limpeza com técnicos qualificados</div>
+      <div class="aviso-mao-de-obra"><span>🔨</span> <strong>ATENÇÃO:</strong> Os valores abaixo são referentes APENAS à MÃO DE OBRA. Peças e materiais não estão inclusos e serão cobrados à parte, se necessários.</div>
+    </div>
+    <div class="section">
+      <div class="problema-cliente-section">
+        <h3>📝 Conte-nos sobre o seu ar condicionado</h3>
+        <textarea id="problema-arcondicionado" class="problema-cliente-textarea" rows="4" placeholder="Ex: Quero instalar um split novo, meu ar não está gelando, preciso de limpeza..."></textarea>
+      </div>
+      <div class="servicos-grid" id="servicos-arcondicionado"></div>
+      <div class="cart-panel">
+        <div class="cart-header">
+          <h3>🛒 Meu Carrinho</h3>
+          <label class="visita-checkbox"><input type="checkbox" id="visita-tecnica-checkbox5" onchange="toggleVisitaTecnica(this)"><span>🔍 Visita Técnica (R$ 50,00)</span></label>
+          <span id="cart-itens-count-arcondicionado" style="background:rgba(122,179,200,0.2); padding:4px 12px; border-radius:30px;">0 itens</span>
+        </div>
+        <div id="visita-info-arcondicionado" class="visita-tecnica-info">
+          <div class="condicoes-container">
+            <label>⚠️ Condições especiais:</label>
+            <div class="opcoes-tags" id="opcoes-tags-arcondicionado">
+              <div class="opcao-tag" data-opcao="🏠 Pé direito alto (+3m)">🏠 Pé direito alto (+3m)</div>
+              <div class="opcao-tag" data-opcao="🏢 Andar alto sem elevador">🏢 Andar alto sem elevador</div>
+              <div class="opcao-tag" data-opcao="🚧 Acesso restrito/difícil">🚧 Acesso restrito/difícil</div>
+              <div class="opcao-tag" data-opcao="📍 Local afastado">📍 Local afastado</div>
+              <div class="opcao-tag" data-opcao="⚙️ Estrutura não padronizada">⚙️ Estrutura não padronizada</div>
+              <div class="opcao-tag" data-opcao="🪜 Necessita equipamento especial">🪜 Necessita equipamento especial</div>
+            </div>
+            <textarea id="observacao-arcondicionado" class="observacao-textarea" rows="2" placeholder="Outras condições especiais..."></textarea>
+          </div>
+        </div>
+        <div id="cart-items-list-arcondicionado" class="cart-items"><div class="vazio-msg">Nenhum serviço adicionado.<br>Clique em + para montar seu orçamento.</div></div>
+        <div id="cart-total-arcondicionado" class="cart-total">💰 TOTAL: R$ 0,00</div>
+        <div class="cart-actions">
+          <button class="btn-whatsapp-cart" onclick="enviarOrcamento()">📲 Enviar orçamento via WhatsApp</button>
+          <button class="btn-clear-cart" onclick="limparCarrinho()">🗑️ Limpar carrinho</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="page-outros" class="page">
+    <div class="hero">
+      <div class="local-badge"><span>📍</span> <span>Atendimento exclusivo · <strong>Campinas/SP</strong></span></div>
+      <h1>🔧 Outros Serviços</h1>
+      <div class="tagline">Não encontrou o que precisa nas categorias acima? Conte pra nós!</div>
+    </div>
+    <div class="section">
+      <div class="problema-cliente-section">
+        <h3>📝 Descreva o serviço que você precisa</h3>
+        <textarea id="problema-outros" class="problema-cliente-textarea" rows="5" placeholder="Ex: Preciso de um serviço de pintura, montagem de móveis, instalação de prateleiras..."></textarea>
+      </div>
+      <div class="cart-panel">
+        <div class="cart-actions" style="margin-top: 0;">
+          <button class="btn-whatsapp-cart" onclick="enviarOutrosServicos()">📲 Enviar pedido via WhatsApp</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="page-galeria" class="page">
     <div class="hero" style="padding-bottom: 20px;">
       <div class="local-badge"><span>📍</span> <span>Atendimento exclusivo · <strong>Campinas/SP</strong></span></div>
@@ -501,11 +567,10 @@ const servicosEletrica = [
 ];
 
 const servicosHidraulica = [
-  { nome: "Instalação de Vaso sanitário", preco: 220, desc: "Inclui vedação e fixação" },
   { nome: "Reparo válvula Hydra", preco: 90, desc: "Manutenção completa" },
   { nome: "Instalação de torneira", preco: 80, desc: "Torneira simples" },
   { nome: "Reparo caixa acoplada", preco: 120, desc: "Troca de peças internas" },
-  { nome: "Troca de registro", preco: 150, desc: "Registro de gaveta" },
+  { nome: "Reparo de registro de gaveta", preco: 150, desc: "Manutenção completa" },
   { nome: "Boia caixa d'água", preco: 90, desc: "Substituição ou reparo" },
   { nome: "Sifão", preco: 80, desc: "Instalação ou reparo" },
   { nome: "Reparo de registro de pressão", preco: 90, desc: "Manutenção completa" },
@@ -524,6 +589,11 @@ const servicosAutomacao = [
   { nome: "Kit automação básico", preco: 500, desc: "2 interruptores + 1 tomada" }
 ];
 
+const servicosArCondicionado = [
+  { nome: "Instalação Split 9.000 a 12.000 BTUs", preco: 180, desc: "Instalação completa" },
+  { nome: "Instalação Split 18.000 a 24.000 BTUs", preco: 220, desc: "Instalação completa" }
+];
+
 let carrinho = [];
 let visitaTecnica = false;
 let descricaoProblemaVisita = "";
@@ -532,6 +602,7 @@ let observacaoExtra = "";
 let problemaEletrica = "";
 let problemaHidraulica = "";
 let problemaAutomacao = "";
+let problemaArCondicionado = "";
 
 function toggleVisitaTecnica(checkbox) {
   visitaTecnica = checkbox.checked;
@@ -545,7 +616,7 @@ function toggleVisitaTecnica(checkbox) {
 function atualizarDadosVisita() {
   descricaoProblemaVisita = document.getElementById('descricao-problema-home')?.value || "";
   observacaoExtra = document.getElementById('observacao-home')?.value || document.getElementById('observacao-eletrica')?.value || "";
-  const paginas = ['home', 'eletrica', 'hidraulica', 'automacao'];
+  const paginas = ['home', 'eletrica', 'hidraulica', 'automacao', 'arcondicionado'];
   paginas.forEach(pagina => {
     const obsInput = document.getElementById(`observacao-${pagina}`);
     if (obsInput && obsInput.value !== observacaoExtra) obsInput.value = observacaoExtra;
@@ -556,6 +627,7 @@ function atualizarProblemasCategoria() {
   problemaEletrica = document.getElementById('problema-eletrica')?.value || "";
   problemaHidraulica = document.getElementById('problema-hidraulica')?.value || "";
   problemaAutomacao = document.getElementById('problema-automacao')?.value || "";
+  problemaArCondicionado = document.getElementById('problema-arcondicionado')?.value || "";
 }
 
 function selecionarOpcao(elemento) {
@@ -567,7 +639,7 @@ function selecionarOpcao(elemento) {
     elemento.classList.add('selected');
     opcoesSelecionadas.push(opcao);
   }
-  const paginas = ['home', 'eletrica', 'hidraulica', 'automacao'];
+  const paginas = ['home', 'eletrica', 'hidraulica', 'automacao', 'arcondicionado'];
   paginas.forEach(pagina => {
     document.querySelectorAll(`#opcoes-tags-${pagina} .opcao-tag`).forEach(tag => {
       if (opcoesSelecionadas.includes(tag.getAttribute('data-opcao'))) { tag.classList.add('selected'); } else { tag.classList.remove('selected'); }
@@ -576,7 +648,7 @@ function selecionarOpcao(elemento) {
 }
 
 function inicializarEventosOpcoes() {
-  const paginas = ['home', 'eletrica', 'hidraulica', 'automacao'];
+  const paginas = ['home', 'eletrica', 'hidraulica', 'automacao', 'arcondicionado'];
   paginas.forEach(pagina => {
     document.querySelectorAll(`#opcoes-tags-${pagina} .opcao-tag`).forEach(tag => {
       tag.addEventListener('click', () => selecionarOpcao(tag));
@@ -584,7 +656,7 @@ function inicializarEventosOpcoes() {
     const obsInput = document.getElementById(`observacao-${pagina}`);
     if (obsInput) obsInput.addEventListener('input', atualizarDadosVisita);
   });
-  ['problema-eletrica','problema-hidraulica','problema-automacao'].forEach(id => {
+  ['problema-eletrica','problema-hidraulica','problema-automacao','problema-arcondicionado'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.addEventListener('input', atualizarProblemasCategoria);
   });
@@ -597,7 +669,7 @@ function calcularTotalComVisita() {
 }
 
 function atualizarTodosContadores() {
-  ['eletrica', 'hidraulica', 'automacao'].forEach(pagina => {
+  ['eletrica', 'hidraulica', 'automacao', 'arcondicionado'].forEach(pagina => {
     document.querySelectorAll(`#page-${pagina} .servico-card`).forEach(card => {
       const nome = card.getAttribute('data-nome');
       const item = carrinho.find(i => i.nome === nome);
@@ -640,7 +712,7 @@ function limparCarrinho() {
   if (carrinho.length === 0 && !visitaTecnica) return;
   if (confirm('🗑️ Tem certeza que deseja limpar todo o carrinho?')) {
     carrinho = []; visitaTecnica = false; descricaoProblemaVisita = ""; opcoesSelecionadas = []; observacaoExtra = "";
-    problemaEletrica = ""; problemaHidraulica = ""; problemaAutomacao = "";
+    problemaEletrica = ""; problemaHidraulica = ""; problemaAutomacao = ""; problemaArCondicionado = "";
     document.querySelectorAll('[id^="visita-tecnica-checkbox"]').forEach(cb => cb.checked = false);
     document.querySelectorAll('.visita-tecnica-info').forEach(el => el.classList.remove('show'));
     document.querySelectorAll('.problema-textarea, .observacao-textarea, .problema-cliente-textarea').forEach(el => el.value = "");
@@ -679,6 +751,7 @@ function renderizarTodosCarrinhos() {
   renderizarCarrinhoEm('cart-items-list-eletrica', 'cart-itens-count-eletrica', 'cart-total-eletrica');
   renderizarCarrinhoEm('cart-items-list-hidraulica', 'cart-itens-count-hidraulica', 'cart-total-hidraulica');
   renderizarCarrinhoEm('cart-items-list-automacao', 'cart-itens-count-automacao', 'cart-total-automacao');
+  renderizarCarrinhoEm('cart-items-list-arcondicionado', 'cart-itens-count-arcondicionado', 'cart-total-arcondicionado');
 }
 
 function enviarOrcamento() {
@@ -689,6 +762,7 @@ function enviarOrcamento() {
   if (problemaEletrica) msg += `⚡ *PROBLEMA ELÉTRICO RELATADO:*\n${problemaEletrica}\n\n`;
   if (problemaHidraulica) msg += `💧 *PROBLEMA HIDRÁULICO RELATADO:*\n${problemaHidraulica}\n\n`;
   if (problemaAutomacao) msg += `🏠 *AUTOMAÇÃO DESEJADA:*\n${problemaAutomacao}\n\n`;
+  if (problemaArCondicionado) msg += `❄️ *AR CONDICIONADO:*\n${problemaArCondicionado}\n\n`;
   msg += '📋 *SERVIÇOS SOLICITADOS:*\n';
   carrinho.forEach(item => { msg += `• ${item.nome}: ${item.quantidade}x R$ ${item.preco.toFixed(2)} = R$ ${(item.preco * item.quantidade).toFixed(2)}\n`; });
   if (visitaTecnica) {
@@ -709,6 +783,16 @@ function abrirWhatsApp(numero, mensagem) {
   let n = numero.replace(/\D/g, '');
   if (!n.startsWith('55')) n = '55' + n;
   window.open(`https://wa.me/${n}?text=${encodeURIComponent(mensagem)}`, '_blank');
+}
+
+function enviarOutrosServicos() {
+  const descricao = document.getElementById('problema-outros')?.value.trim() || "";
+  if (!descricao) { alert('⚠️ Descreva o serviço que você precisa antes de enviar.'); return; }
+  let msg = '🏠 *PIZA SOLUÇÕES - SOLICITAÇÃO DE SERVIÇO*\n\n';
+  msg += `🔧 *SERVIÇO DESCRITO PELO CLIENTE:*\n${descricao}\n\n`;
+  msg += '📍 Atendimento: Campinas/SP\n';
+  msg += '✨ Aguardo seu contato para avaliarmos o serviço e enviarmos um orçamento!';
+  window.open(`https://wa.me/5519988712778?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
 function renderizarServicos(containerId, servicos) {
@@ -738,12 +822,13 @@ document.querySelectorAll('.nav-link[data-page]').forEach(btn => {
 renderizarServicos('servicos-eletrica', servicosEletrica);
 renderizarServicos('servicos-hidraulica', servicosHidraulica);
 renderizarServicos('servicos-automacao', servicosAutomacao);
+renderizarServicos('servicos-arcondicionado', servicosArCondicionado);
 renderizarTodosCarrinhos();
 inicializarEventosOpcoes();
 
 window.addEventListener('load', () => {
   const hash = window.location.hash.replace('#', '');
-  if (hash && ['home','eletrica','hidraulica','automacao','galeria','contato'].includes(hash)) showPage(hash);
+  if (hash && ['home','eletrica','hidraulica','automacao','arcondicionado','outros','galeria','contato'].includes(hash)) showPage(hash);
 });
 </script>
 </body>
